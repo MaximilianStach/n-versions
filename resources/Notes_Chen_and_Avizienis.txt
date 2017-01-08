@@ -1,0 +1,39 @@
+Notes based on: "N-VERSION PROGRAMMING : A FAULT-TOLERANCE APPROACH TO RELIABILITY OF SOFTWARE OPERATION" by Liming Chen and Algirdas Avizienis
+
+N-Version Programming = independent generation of >= 2 functionally equivalent programs (called versions) from the same initial specification
+
+
+3 Assumptions of difficulties:
+    - Difficult to construct error-free software
+    - Software unlikely to perform complete self-chechikng on its own outputs
+    - Difficult to perform run-time diagnosis of software in order to locate the source of a software error  
+    
+ -> Conclusion -> Redundant software shoudl try to meet the following constrainst:
+    - It does not require complete self-checking
+    - It does not rely upon run-time software diagnosis
+    - It must contain independently developed alternative routines for the same functions
+    
+    
+2 distinc approaches have been investigated;
+    - Recovery blocks: Organized like dynamic redundancy (stand-by-sparing) technique in hardware.
+        Run-time software error detection and error recovery via alternate path of operation
+        -Stand-by-sparing:
+          - only one module is driving outputs
+          - other modules are
+            - idle   =>   hot spares
+            - shut down  => cold spares
+          - error detection  => switch to a new module
+          - hot spares
+            - no power-up delays
+            - power consumption
+          - cold spares
+            - opposite of hot spares
+    - Software redundancy analogously to the static  (replication and voting) redundancy approach in hardware.
+        - 1975: Experimental research project "N-Version programming" at UCLA to test this approach 
+        
+        
+Concepts of N-Version Programming:
+    - N >= 2 functionally equivalend programs (called versions) from the same initial specification
+    - Programming efforts carried out by N individuals or groups that do not interact with respect to the programming process
+    - Whenever possible different algorithms and programming languages or translators are used
+    - Initial specification is a formal specification in a specification language
