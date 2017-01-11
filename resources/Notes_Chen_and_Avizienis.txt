@@ -36,4 +36,10 @@ Concepts of N-Version Programming:
     - N >= 2 functionally equivalend programs (called versions) from the same initial specification
     - Programming efforts carried out by N individuals or groups that do not interact with respect to the programming process
     - Whenever possible different algorithms and programming languages or translators are used
-    - Initial specification is a formal specification in a specification language
+    - Initial specification is a formal specification in a specification language of the functional requirements
+        - In detail:
+            1. the function to be implemented
+            2. data formats for the special mechanisms: comparison vecotrs ("c-vectors") and synchonization mechanisms
+            3. the cross-check points ("cc-points") for c-vector generation
+            4. the comparison (matching or voting) algorithm
+            5. the response to the possible outcomes of matching (N = 2) or voting (N > 2)
