@@ -43,3 +43,45 @@ Concepts of N-Version Programming:
             3. the cross-check points ("cc-points") for c-vector generation
             4. the comparison (matching or voting) algorithm
             5. the response to the possible outcomes of matching (N = 2) or voting (N > 2)
+    - The versions form an N-version software unit
+    - Performance of each version must satisfy aome acceptance criteria before it can be integrated into the program
+    -> Acceptance program to test a version
+    - Supervisory program (Driver) to drive an N-version software unit (includes voting/matching
+    - N-version program = Set of N-version software unit and its driver
+    
+3 types of special mechanisms needed:
+    1. comparison (c-) vectors
+        - subset of version's local porgram
+        - interpretable by the driver
+        - comparison variables to be matched and status flags as indicators of occurred events (ex.: end-of-file, exception conditions)
+        - results can pe acceptable or it's adisagreeing version
+    2. comparison status (cs-) indicators
+        - indicate actions to be taken after comparison at a cc-point
+        - actions to be taken depend on:
+            1. whether all versions deliver the c-vectors withing specified time
+            2. whether the c-vectors agree or disagree
+        - possible outcomes:
+            1. continuation
+            2. termination of one ore more versions
+            3. continuation after changes in the c-vectors of one or more versions base on majority decision
+    3. synchronization mechanisms
+    - cross-check (cc-) points mark the points at which c-vectors are generated and used for comparison
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
