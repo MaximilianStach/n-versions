@@ -50,6 +50,7 @@ Concepts of N-Version Programming:
     - N-version program = Set of N-version software unit and its driver
     
 3 types of special mechanisms needed:
+    - cross-check (cc-) points mark the points at which c-vectors are generated and used for comparison
     1. comparison (c-) vectors
         - subset of version's local porgram
         - interpretable by the driver
@@ -65,8 +66,39 @@ Concepts of N-Version Programming:
             2. termination of one ore more versions
             3. continuation after changes in the c-vectors of one or more versions base on majority decision
     3. synchronization mechanisms
-    - cross-check (cc-) points mark the points at which c-vectors are generated and used for comparison
+        - synchonize execution steps
+        - each version uses it to signal the driver that a c-vector is ready
+        - prevents comparison before all c-vectors are ready
+        - version initialized as INACTIVE -> invoked through driver signal (WAITING) -> request for service signal activates it (RUNNING)
+        - if cs-indicators contain terminating conditions then the version is terminated and goes bock to INACTIVE
+        - otherwise it creates c-vectors at the next cc-point, signals the drive the readyness of the c-vector and returns to WAITING
+        
+Observations:
+    - N-version approach limited by the initial specification
+    - Initial specification has to be correct, complete and unambiguos
+    - The idea is that formal correctness proofs or exhaustive validations of initial specifications in formal specification language are
+        much more likely to succeed within acceptable cost bounds than proofs or validation of the actual implementations.
+    - Success as a method of runtime tolerance depends on whether the residual software fualts in each version are distinguishable
+        - distinguishable software faults: faults that will cause a disagreement between c-vectors at the specified cc-points 
+        - distinguishability is affected by the choice of c-vectors and cc-points.
+    - Conjecture that independent programming efforts greatly reduce the propability of identical software defect in two or more versions
+    - Goal: Tolerance of software faults
     
+UCLA addesses 2 so far unansweted questions:
+    1. Which constraints (nature of the targeted problem) have to be satisfied to make N-version programming feasible at all regardless of the cost?
+    2. How does the cost-effectiveness of the N-version programming approach compare to the two alternatives:
+        1. non-redundant ("fault intolerant") programming
+        2. "recovery block" approach
+        
+Comparison with recovery block approach:
+    - Newly developed modules -> old ones can be used as alternative -> lower production cost
+    - Memory overhead in case of neseted recovery block structures, system state must be saved 
+    - Intermediate output from block may not be reversible in a real-time environment
+    - Procedure to verify results from the execution of the program can be as complex as the program itself (look at sorting problems-> have to check order, identity of elements)
+        -> In most cases only "reasonableness" rather than "correctness" may be checked for by acceptance tests.
+    - N-versions: Self checking not required, possible to have no delay in case of fault
+    
+Adaptive voting: with weights R = W1 x R1 + W2 x R2 + W3 x R3
     
     
     
