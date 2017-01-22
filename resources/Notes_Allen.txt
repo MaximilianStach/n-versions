@@ -1,0 +1,35 @@
+N-Version Programming for the Detection of Zero-day Exploits
+
+Web application vulnerability:
+	- Univalidated Input (eg.: SQL Injections)
+	- Broken Access Control
+	- Broken Authentication and Session Management
+	- Cross Site Scripting (XSS) Flaws
+	- Buffer Overflows
+	- Injection Flaws
+	- Improper Error Handling
+	- Insecure Storage
+	- Denial of Service (DoS)
+	- Insecure Configuration Management
+
+Test Website SealedBid to test effectivity of N-version Programming against such vulnerabilities
+	- Setups:
+		- Debian, Apache, PHP, MySQL
+		- Solaris 9, Tomcat, JSP, Postgres
+		- Windows 2000, IIS, ASP, MS SQL 
+	- HTML template for each page
+	- Presented HTML should be identical at comparison based on essential concents of the documents
+	- Shared vs multiple databases -> Used multiple (each implementation it's own)
+	- Reset button for DB's to synchronize to some initial state
+	- HTTP query dispatcher receives requests and compares replies from implementations
+		- IBM’s Web Intermediaries (WBI) framework
+		- Returns one of the replies if all match
+		- If any two do not match or a timeout occurres, relevant data of query gets logged
+			-> Answer with generic error message to conceal n-version approach
+			-> Take site offline, inform admin
+	- Session ID database provides back and forth session cookie management
+		- Special formatting of HTTP headers might be lost
+		
+Observations:
+	- Correctly specified, all differences either relate to a bug in the code, or a security issue
+	- No specific tests and results given
