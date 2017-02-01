@@ -1,16 +1,17 @@
+\subsection{Motivation}\label{motivation}
+
 Die Bedeutung von fehlerfreien und zuverlässigen Programmen in modernen Aufgabenfeldern der Software-Entwicklung ist allgegenwärtig.
 Insbesondere für sicherheitskritische Bereiche, in denen falsche oder zu spät eintreffende Ergebnisse zu fatalen Folgen führen können, wird ein hohes Maß an Aufwand betrieben, um Fehler zu Laufzeit auszuschließen.
-Detaillierte Konzeptbeschreibungen, Korrektheitsbeweise und automatisierte Test der entwickelten Programme gehören zu gängigen Ansätzen um dies zu erreichen ---missing ref----.
-In den 70er Jahren beginnend wurden auf Redundanz von Hardwarekomponenten beruhende Konzepte zur Fehlervermeidung auf die Software-Ebene übertragen und als N-Version Programming \cite{Chen1978} bekannt.
+Detaillierte Konzeptbeschreibungen, Korrektheitsbeweise und automatisierte Testläufe der entwickelten Programme gehören zu gängigen Ansätzen um dies zu erreichen.
+In den 70er Jahren beginnend wurden auf Redundanz von Hardwarekomponenten beruhende Konzepte zur Fehlervermeidung auf die Software-Ebene übertragen und als \enquote{N-Version Programming} \cite{Chen1978} bekannt.
+Die N-Version Programmierung ist ein Ansatz der Entwicklung von Software-Archi"-tekturen um eine möglichst fehlerfreie Ausführung von Software durch Entwicklung von mindestens zwei funktional equivalenten Software-Modulen zu erreichen, die auch Versionen genannt werden.
+Sie zielt darauf ab, dass die verschiedenen Versionen von unabhängigen Entwicklerteams nach einer gemeinsamen Spezifikation entworfen werden und somit nicht die gleichen Fehler in der Entwicklung gemacht werden.
+Die Ergebnisse einer Anfrage an die unabhängig von einander entworfenen Versionen werden mit einander verglichen um inkorrekte Ergebnisse auszuschließen.
+Das Ziel dieser Arbeit insbesondere besteht darin, die Geschichte und Konzepte der N-Version Programmierung zu erläutern und einige bedeutende Studien vorzustellen, welche die Effektivität des Ansatzes zur Fehlervermeidung untersucht haben.
 
 
+\subsection{Aufbau der Arbeit}\label{aufbau}
 
-N-Version Programming ist ein Ansatz der Entwicklung von Software-Architekturen um eine möglichst fehlerfreie Ausführung von Programmen durch Entwicklung von mindestens zwei funktional equivalenten Programmen zu erreichen.
-Die Ergebnisse einer Anfrage and die unabhängig von einander entworfenen Programme, welche auch als Versionen bezeichnet werden, werden mit einander verglichen um inkorrekte Ergebnisse auszuschließen.
-
----- weitere kurze Beschreibung -----
-
-
-In dieser Arbeit wird zunächst in Kapitel \ref{stand} ein Überblick über die Geschichte sowie über den aktuellen Stand der Forschung des N-Version Programming aufgezeigt, woraufhin verschiedene Definitionen und Konzepte des Ansatzes in Kapitel \ref{definition} detailliert beschrieben werden. Nachfolgend werden in Kapitel \ref{beispiele} Projekte vorgestellt, die Programme nach den Prinzipien des N-Version Programming entwickelt haben und auf die besonderen Anforderungen, Schwierigkeiten und Ergebnisse, die dadurch entstanden, eingegangen.
-Um Erkenntnisse bezüglich der Verwendbarkeit des Ansatzes auf aktuelle Problemstellungen der Software-Entwicklung gewinnen zu können, werden die im vorherigen Kapitel \ref{beispiele} ausgearbeiteten Beobachtungen bezüglich der Praxis von N-Version Programming auf aktuelle Problemstellungen bezogen und mit anderen Ansätzen (wie bsp.----) verglichen.
-Abschließend wird die vorgestellte Methodik und die gewonnenen Beobachtungen über N-Version Programming in Kapitel \ref{zusammenfassung-ausblick} zusammengefasst und ein Ausblick über die Anwendbarkeit und Relevanz von N-Version Programming für zukünftige Softwareprojekte skizziert.
+In dieser Arbeit wird zunächst in Kapitel \ref{geschichte} ein Überblick über die Geschichte sowie über die Konzepte der N-Version Programmierung aufgezeigt, woraufhin verschiedene Definitionen und Konzepte des Ansatzes in Kapitel \ref{konzepte} kurz beschrieben werden. Nachfolgend werden in Kapitel \ref{beispiele} Projekte vorgestellt, die Programme nach den Prinzipien des N-Version Programming entwickelt haben und auf die besonderen Anforderungen, Schwierigkeiten und Ergebnisse, die dadurch entstanden, eingegangen.
+Um Erkenntnisse bezüglich der Verwendbarkeit des Ansatzes auf aktuelle Problemstellungen der Software-Entwicklung gewinnen zu können, werden die im vorherigen Kapitel \ref{beispiele} ausgearbeiteten Beobachtungen bezüglich der Praxis von N-Version Programming in Kapitel \ref{bewertung} zusammengefasst und das Einsatzpotential für aktuelle Problemfelder der Softwareentwicklung disskutiert.
+Abschließend werden die vorgstellten Konzepte und die gewonnenen Beobachtungen über die N-Version Programmierung in Kapitel \ref{zusammenfassung-ausblick} zusammengefasst und ein Ausblick über die Anwendbarkeit und Relevanz von N-Version Programmierung für zukünftige Softwareprojekte skizziert.
