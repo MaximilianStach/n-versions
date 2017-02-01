@@ -2,7 +2,7 @@
 Dieses Kapitel zielt auf einen Einstieg in die N-Version Programmierung ab. In Kapitel \ref{geschichte} wird auf die Entstehungsgeschichte des Ansatzes eingegangen, woraufhin in Kapitel \ref{definition} die zugrundeliegenden Konzepte erläutert werden.
 \subsection{Geschichte}\label{geschichte}
 %
-Design-Fehler, inkorrekte Installationen und Mutwillige Angriffe zählen mit zu den Risiken in Software-Systemen. Sie können beispielsweise zu falschen oder zu spät eintreffenden Ergebnissen, Datenverlusten und als weitere Folge zu wirtschaftlichen und persönlichen Schäden führen \cite{Laprie:1995:DCC:1899254.1899261}.
+Design-Fehler, inkorrekte Installationen und mutwillige Angriffe zählen mit zu den Risiken in Software-Systemen. Sie können beispielsweise zu falschen oder zu spät eintreffenden Ergebnissen, Datenverlusten und als weitere Folge zu wirtschaftlichen und persönlichen Schäden führen \cite{Laprie:1995:DCC:1899254.1899261}.
 Eine typische Herangehensweise der Softwareentwicklung um Fehler in Programmen zu vermeiden, besteht in der möglichst vollständigen Eliminierung von Design-Fehlern vor der Ausführung im produktiven Betrieb \cite{Avizienis:1975:FFC:800027.808469}. 
 Die Idee, durch redundante Berechnungen von Ergebnissen Fehler zu erkennen und zu vermeiden, geht lange zurück. Bereits 1834 schrieb der irische Naturwissenschaftler Dionysius Lardner: \enquote{\emph{The most certain and effectual check upon errors which arise in the process of computation,	is to cause the same computations to be made by separate and independent computers; and this	check is rendered still more decisive if they make their computations by different methods.}} \cite{lardner}.
 %
@@ -21,9 +21,8 @@ Falls der Akzeptanztest bei dem primären Block scheitert,wird der erste sekund�
 	\label{graph-recovery}
 \end{figure}
 %
-
 %
-Der zunächst als \enquote{redundant programming} bezeichnete Ansatz, einen systematischen Prozess zur Entwicklung von funktional equivalenten, multiversionalen Programmen, zu definieren, wurde später in \enquote{N-version programming} umbennant.
+Der zunächst als \enquote{redundant programming} bezeichnete Ansatz, einen systematischen Prozess zur Entwicklung von funktional equivalenten, multiversionalen Programmen zu definieren, wurde später in \enquote{N-version programming} umbennant.
 Wie in Abbildung \ref{graph-n-version-single} ersichtlich, liegt der wesentliche Unterschied zum Ansatz der Recovery-Blocks darin, dass die als Versionen bezeichneten Blöcke in jedem Fall alle ausgeführt werden und statt eines Akzeptanztests ein Voting auf Basis aller Ergebnisse der verschiedenen Versionen durchgeführt wird.
 Die begründende Arbeit dazu veröffentlichten Liming Chen und Algirdas Avizienis 1977 mit \enquote{\emph{N-version programming: A fault-tolerance approach to reliability of software operation}} \cite{Chen1978}.
 %
@@ -41,17 +40,17 @@ Die begründende Arbeit dazu veröffentlichten Liming Chen und Algirdas Avizieni
 
 \subsubsection{Definition}
 Chen und Avizienis definierten 1977 N-Version Programmierung wie folgt: \enquote{\emph{N-version programming is defined as the independent generation of $ N \geq 2 $ functionally equivalent programs, called \enquote{versions}, from the same initial specification}} \cite{Chen1978}.
-Das grundlegenden Konzept ist dabei, dass $ N \geq 2 $ Versionen eines Programms auf Basis einer gemeinsamen initialen Spezifikation entwickelt werden und deren Ergebnisse zur Laufzeit durch einen Treiber miteinander verglichen werden.
+Das grundlegende Konzept ist dabei, dass $ N \geq 2 $ Versionen eines Programms auf Basis einer gemeinsamen initialen Spezifikation entwickelt werden und deren Ergebnisse zur Laufzeit durch einen Treiber miteinander verglichen werden.
 %
 
 %
 \subsubsection{Entwurf}
-Für den Entwurf eines N-Version Programms werden drei besondere Komponente vorgesehen.
+Für den Entwurf eines N-Version Programms werden drei besondere Komponenten vorgesehen.
 (1) Vergleichsvektoren enthalten den relevanten Zustand der jeweiligen Versionen und bestehen aus den zu vergleichenden Variablen, Statusindikatoren und aufgetretenen Ereignissen.
 (2) Vergleichsindikatoren enthalten den Ausgang eines Vergleichs von Vergleichsvektoren und geben an, welche nachfolgende Aktion angestoßen werden soll. 
-(3) Synchronisationsmechanismen regeln den Ablauf einer Programmausführung über Signale zwischen den Versionen und dem verwaltenden Treiber. Der Treiber kann so die Versionen bei Bedarf aktivierten und Bestätigung empfangen, falls ihre Vergleichsvektoren bereitstehen.
+(3) Synchronisationsmechanismen regeln den Ablauf einer Programmausführung über Signale zwischen den Versionen und dem verwaltenden Treiber. Der Treiber kann so die Versionen bei Bedarf aktivieren und Bestätigungen empfangen, falls ihre Vergleichsvektoren bereitstehen.
 
-Die Spezifikation eine N-Version Programm sollte folgende Punkte beinhalten:
+Die Spezifikation eines N-Version Programms sollte folgende Punkte beinhalten:
 \begin{enumerate}
 	\item Die zu implementierende Funktion
 	\item Datenformat der Vergleichsvektoren
@@ -66,7 +65,7 @@ Nach Möglichkeit sollen die einzelnen Versionen von unabhängigen Entwicklertea
 \subsubsection{Funktionsweise}
 
 Auf ein Signal des Treibers hin starten die Versionen ihren Programmablauf bis sie zu einem Vergleichspunkt kommen, ihre Vergleichsvektoren bereitstellen und in einen wartenden Zustand zurückkehren.
-Für $N = 2$ Versionen besteht der Vergleichsalgorithmus in einem direkten Abgleich der Vergleichsvektoren, bei $N > 2$ in einer Wahl der mehrheitlichen Ergebnisse. Falls ein oder mehrere Versionen nicht rechtzeitig ihre Vergleichsvektoren nach Aktivierung wiedergeben, können diese abgebrochen werden. Ansonsten wird ein korrekte Ergebnis aus den vorhandenen Vergleichsvektoren bestimmt. Bei numerischen Operationen können beim Vergleich Abweichungen toleriert werden und adaptiv ein Ergebnis bestimmt werden, in das alle vorhanden Ergebnisse der Versionen einfließen. 
+Für $N = 2$ Versionen besteht der Vergleichsalgorithmus in einem direkten Abgleich der Vergleichsvektoren, bei $N > 2$ in einer Wahl der mehrheitlichen Ergebnisse. Falls ein oder mehrere Versionen nicht rechtzeitig ihre Vergleichsvektoren nach Aktivierung wiedergeben, können diese abgebrochen werden. Ansonsten wird ein korrektes Ergebnis aus den vorhandenen Vergleichsvektoren bestimmt. Bei numerischen Operationen können beim Vergleich Abweichungen toleriert und ein gemeinsames Ergebnis adaptiv bestimmt werden, in das alle vorhanden Ergebnisse der Versionen einfließen. 
 Die zugrunde liegende Annahme, die den zusätzlichen Aufwand der verschiedenen Versionen rechtfertigen soll, besteht darin, dass unabhängige Entwicklungsprozesse signifikant die Wahrscheinlichkeit für identische Design-Fehler in zwei oder mehr Versionen senken.
 Es wird angenommen, dass falls ein Fehler auftritt, er sich nicht in allen Versionen wiederfindet und durch den Vergleich der Ergebnisse ein korrektes Endergebnis erzielt wird.
 
@@ -74,8 +73,8 @@ Es wird angenommen, dass falls ein Fehler auftritt, er sich nicht in allen Versi
 \subsubsection{Beobachtungen}
 Der Kern eines N-Version Programms ist die Spezifikation.
 Da alle erstellten Versionen auf einer gemeinsamen Spezifikation basieren, ist ihre Korrektheit, Vollständigkeit und Eindeutigkeit der am stärksten limitierende Faktor einer effektiven Fehlervermeidung.
-Jedoch argumentieren Chen und Avizienis, dass formale Korrektheitsbeweise der Spezifikationen weniger aufwändig aufgestellt werden können als Beweise der konkreten Implementation eines Programms.
-Im Vergleich zum Recovery-Block-Ansatz muss kein Akzeptanztest konzipiert werden, der ähnliche komplex wie die zu implementierende Funktion sein kann, Zudem kann bei einem Fehler in einer Version trotzdem in einem Durchlauf ein vermutlich korrektes Ergebnis erzielt werden. Allerdings muss länger auf Ergebnisse gewartet werden, falls die Versionen lediglich auf einem Prozessor arbeiten, da diese nacheinander abgearbeitet werden müssen. Diese Verzögerung kann, wie in Abbildung \ref{graph-n-version-multi} angedeutet, durch multi threading oder dem Streuen von Versionen auf verschiedene Einheiten in einem verteilten System aufgehoben werden.
+Jedoch argumentieren Chen und Avizienis, dass formale Korrektheitsbeweise der Spezifikationen weniger aufwändig aufgestellt werden können, als Beweise der konkreten Implementation eines Programms.
+Im Vergleich zum Recovery-Block-Ansatz muss kein Akzeptanztest konzipiert werden, der ähnlich komplex wie die zu implementierende Funktion sein kann. Zudem kann bei einem Fehler in einer Version trotzdem in einem Durchlauf ein vermutlich korrektes Ergebnis erzielt werden. Allerdings muss länger auf Ergebnisse gewartet werden, falls die Versionen lediglich auf einem Prozessor arbeiten, da diese nacheinander abgearbeitet werden müssen. Diese Verzögerung kann, wie in Abbildung \ref{graph-n-version-multi} angedeutet, durch multi threading oder dem Streuen von Versionen auf verschiedene Einheiten in einem verteilten System aufgehoben werden.
 %
 \begin{figure}[ht]
 	\centering
