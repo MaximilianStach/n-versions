@@ -30,19 +30,33 @@ Die begründende Arbeit dazu veröffentlichten Liming Chen und Algirdas Avizieni
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth,natwidth=901,natheight=333]{grafiken/single-thread-n-version.png}
-	\caption{Voting Prinzip in der N-Version Programmierung bei single threading \cite{lucent}}
+	\caption{Voting Prinzip in der N-Version Programmierung bei Single-Threading \cite{lucent}}
 	\label{graph-n-version-single}
 \end{figure}
 %
 %
 
 \subsection{Konzepte} \label{konzepte}
-
+%
+In diesem Kapitel wird zunächst wesentliche Unterschied zwischen Single-Channel und Multi-Channel Architekturen aufgezeigt. Daraufhin wird die Definition der N-Version Programmierung vorgestellt, auf die besonderen Komponenten beim Entwurf von N-Version Programmen eingegangen und deren Funktionsweise erläutert. Abschließend werden erste Beobachtungen über die Annahmen und Limitationen des Ansatzes dargestellt.
+\subsubsection{Single-Channel vs Multi-Channel} \label{channel}
+%
+%
+Bei der mehrfachen Berechnung ($ N \geq 2 $)  eines gewünschte Ergebnisses als fundamentaler Ansatz zur Fehlertoleranz kann zwischen den zwei Architekturen Single-Channel und Multi-Channel unterschieden werden.
+Die Beschreibung der verschiedenen Konfigurationen der Architekturen kann über die Notation $(XT|YH|ZS)$ der folgenden drei Komponenten notiert werden \cite{Avizienis:1985:NAF:1314034.1314064}:
+\begin{enumerate}
+	\item $XT$: $X$ Anzahl an hintereinander ausgeführten Berechnungen
+	\item $YH$: $Y$ eingesetzte (Hardware-)Plattformen $H$
+	\item $ZS$: $Z$ eingesetzte Software-Versionen $S$
+\end{enumerate}
+In einer Single-Channel Architektur werden alle Versionen einer Software auf einer einzigen Plattform $(XT|1H|ZS)$ ausgeführt. In herkömmlichen Systemen kann im Falle eines erkannten Fehlers die eingesetzte Version von einem Sicherungspunkt erneut ausgeführt $(2T|1H|1S)$ oder zusätzlich eine Kopie der ursprünglich eingesetzten Version verwendet werden $(2T|1H|2S)$).
+In Multi-Channel Architekturen hingegen werden $N$ Software-Versionen auf $N$ Hardware-Plattformen ein einziges Mal ausgeführt $(1T|NH|NS)$. 
+%
+%
 \subsubsection{Definition}
 Chen und Avizienis definierten 1977 N-Version Programmierung wie folgt: \enquote{\emph{N-version programming is defined as the independent generation of $ N \geq 2 $ functionally equivalent programs, called \enquote{versions}, from the same initial specification}} \cite{Chen1978}.
 Das grundlegende Konzept ist dabei, dass $ N \geq 2 $ Versionen eines Programms auf Basis einer gemeinsamen initialen Spezifikation entwickelt werden und deren Ergebnisse zur Laufzeit durch einen Treiber miteinander verglichen werden.
 %
-
 %
 \subsubsection{Entwurf}
 Für den Entwurf eines N-Version Programms werden drei besondere Komponenten vorgesehen.
@@ -74,12 +88,12 @@ Es wird angenommen, dass falls ein Fehler auftritt, er sich nicht in allen Versi
 Der Kern eines N-Version Programms ist die Spezifikation.
 Da alle erstellten Versionen auf einer gemeinsamen Spezifikation basieren, ist ihre Korrektheit, Vollständigkeit und Eindeutigkeit der am stärksten limitierende Faktor einer effektiven Fehlervermeidung.
 Jedoch argumentieren Chen und Avizienis, dass formale Korrektheitsbeweise der Spezifikationen weniger aufwändig aufgestellt werden können, als Beweise der konkreten Implementation eines Programms.
-Im Vergleich zum Recovery-Block-Ansatz muss kein Akzeptanztest konzipiert werden, der ähnlich komplex wie die zu implementierende Funktion sein kann. Zudem kann bei einem Fehler in einer Version trotzdem in einem Durchlauf ein vermutlich korrektes Ergebnis erzielt werden. Allerdings muss länger auf Ergebnisse gewartet werden, falls die Versionen lediglich auf einem Prozessor arbeiten, da diese nacheinander abgearbeitet werden müssen. Diese Verzögerung kann, wie in Abbildung \ref{graph-n-version-multi} angedeutet, durch multi threading oder dem Streuen von Versionen auf verschiedene Einheiten in einem verteilten System aufgehoben werden.
+Im Vergleich zum Recovery-Block-Ansatz muss kein Akzeptanztest konzipiert werden, der ähnlich komplex wie die zu implementierende Funktion sein kann. Zudem kann bei einem Fehler in einer Version trotzdem in einem Durchlauf ein vermutlich korrektes Ergebnis erzielt werden. Allerdings muss länger auf Ergebnisse gewartet werden, falls die Versionen lediglich auf einem Prozessor arbeiten, da diese nacheinander abgearbeitet werden müssen. Diese Verzögerung kann durch den Einsatz einer Multi-Channel Architektur $(1T|NH|NS)$, welche die parallele Ausführung aller Versionen erlaubt, aufgehoben werden. Dies kann, wie in Abbildung \ref{graph-n-version-multi} angedeutet, durch  Multi-Threading oder dem Streuen von Versionen auf verschiedene Einheiten in einem verteilten System aufgehoben werden. 
 %
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth,natwidth=901,natheight=333]{grafiken/multi-thread-n-version.png}
-	\caption{Voting Prinzip in der N-Version Programmierung bei multi threading \cite{lucent}}
+	\caption{Voting Prinzip in der N-Version Programmierung bei Multi-Threading \cite{lucent}}
 	\label{graph-n-version-multi}
 \end{figure}
 %
