@@ -50,7 +50,10 @@ Die Beschreibung der verschiedenen Konfigurationen der Architekturen kann über 
 	\item $ZS$: $Z$ eingesetzte Software-Versionen $S$
 \end{enumerate}
 In einer Single-Channel Architektur werden alle Versionen einer Software auf einer einzigen Plattform $(XT|1H|ZS)$ ausgeführt. In herkömmlichen Systemen kann im Falle eines erkannten Fehlers die eingesetzte Version von einem Sicherungspunkt erneut ausgeführt $(2T|1H|1S)$ oder zusätzlich eine Kopie der ursprünglich eingesetzten Version verwendet werden $(2T|1H|2S)$).
-In Multi-Channel Architekturen hingegen werden $N$ Software-Versionen auf $N$ Hardware-Plattformen ein einziges Mal ausgeführt $(1T|NH|NS)$. 
+In Multi-Channel Architekturen hingegen werden $N$ Software-Versionen auf $N$ Hardware-Plattformen gleichzeitig ausgeführt $(1T|NH|NS)$.
+Mit $N=4$ Versionen und Plattformen wurde diese Architektur beispielsweise im Space Shutle der NASA eingesetzt \cite{conf/ifip/Goldberg80}.
+Zum Erzielen von Fehlertoleranz durch den Ansatz der mehrfachen Berechnung in Verbindung mit Multi-Channel Architekturen müssen zwei fundamentale Bedingungen erfüllt sein. Zum einen muss die Konsistenz der initialen Zustände und Eingaben aller Berechnungen gegeben sein und zum anderen muss ein zuverlässiger Vergleichsalgorithmus die einzelnen Ergebnisse vergleichen und ein finales Ergebnis bereitstellen.
+Die im Folgenden beschriebenen Eigenschaften des Entwurfs von N-Version Programmen behandeln diese Bedingungen.
 %
 %
 \subsubsection{Definition}
