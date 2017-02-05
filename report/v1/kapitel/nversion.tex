@@ -35,7 +35,7 @@ Die begründende Arbeit dazu veröffentlichten Liming Chen und Algirdas Avizieni
 \end{figure}
 %
 %
-
+Beispiele des Einsatzes der Konzepte der N-Version Programmierung liegen vor allem mit diversen Airbus Modellen wie dem A310 in der Luftfahrt.
 \subsection{Konzepte} \label{konzepte}
 %
 In diesem Kapitel wird zunächst der wesentliche Unterschied zwischen Single-Channel und Multi-Channel Architekturen aufgezeigt. Daraufhin wird die Definition der N-Version Programmierung vorgestellt, auf die besonderen Komponenten beim Entwurf von N-Version Programmen eingegangen und deren Funktionsweise erläutert. Abschließend werden erste Beobachtungen über die Annahmen und Limitationen des Ansatzes dargestellt.
@@ -81,12 +81,12 @@ Nach Möglichkeit sollen die einzelnen Versionen von unabhängigen Entwicklertea
 
 \subsubsection{Funktionsweise}
 
-Auf ein Signal des Treibers hin starten die Versionen ihren Programmablauf bis sie zu einem Vergleichspunkt kommen, ihre Vergleichsvektoren bereitstellen und in einen wartenden Zustand zurückkehren.
-Für $N = 2$ Versionen besteht der Vergleichsalgorithmus in einem direkten Abgleich der Vergleichsvektoren, bei $N > 2$ in einer Wahl der mehrheitlichen Ergebnisse. Falls ein oder mehrere Versionen nicht rechtzeitig ihre Vergleichsvektoren nach Aktivierung wiedergeben, können diese abgebrochen werden. Ansonsten wird ein korrektes Ergebnis aus den vorhandenen Vergleichsvektoren bestimmt. Bei numerischen Operationen können beim Vergleich Abweichungen toleriert und ein gemeinsames Ergebnis adaptiv bestimmt werden, in das alle vorhanden Ergebnisse der Versionen einfließen. 
+Auf ein Signal des Treibers hin starten die Versionen ihren Programmablauf mit identischen Eingabewerten bis sie zu einem Vergleichspunkt kommen, ihre Vergleichsvektoren bereitstellen und in einen wartenden Zustand zurückkehren.
+Für $N = 2$ Versionen besteht der Vergleichsalgorithmus in einem direkten Abgleich der Vergleichsvektoren, bei $N > 2$ in einer Wahl des mehrheitlichen Ergebnisses. Falls ein oder mehrere Versionen nicht rechtzeitig ihre Vergleichsvektoren nach Aktivierung wiedergeben, können diese abgebrochen werden. Ansonsten wird ein korrektes Ergebnis aus den vorhandenen Vergleichsvektoren bestimmt. Bei numerischen Operationen können beim Vergleich Abweichungen toleriert und ein gemeinsames Ergebnis adaptiv bestimmt werden, in das alle vorhanden Ergebnisse der Versionen einfließen. 
 Die zugrunde liegende Annahme, die den zusätzlichen Aufwand der verschiedenen Versionen rechtfertigen soll, besteht darin, dass unabhängige Entwicklungsprozesse signifikant die Wahrscheinlichkeit für identische Design-Fehler in zwei oder mehr Versionen senken.
 Es wird angenommen, dass falls ein Fehler auftritt, er sich nicht in allen Versionen wiederfindet und durch den Vergleich der Ergebnisse ein korrektes Endergebnis erzielt wird.
-
-
+%
+%
 \subsubsection{Beobachtungen}
 Der Kern eines N-Version Programms ist die Spezifikation.
 Da alle erstellten Versionen auf einer gemeinsamen Spezifikation basieren, ist ihre Korrektheit, Vollständigkeit und Eindeutigkeit der am stärksten limitierende Faktor einer effektiven Fehlervermeidung.

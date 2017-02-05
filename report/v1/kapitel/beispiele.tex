@@ -2,38 +2,60 @@
 Im vorherigen Kapitel \ref{definition} wurde die Geschichte der N-Version Programmierung kurz vorgestellt und auf die zugrunde liegenden Konzepte eingegangen.
 Dabei wurde festgehalten, dass die Zuverlässigkeit eines N-Version Programms wesentlich davon abhängt, wie unabhängig die verschiedenen Versionen eines Programms und wie unabhängig folglich die auftretenden Fehler zur Laufzeit sind. Damit sich der zusätzliche Entwicklungsaufwand der verschiedenen Versionen lohnt, dürfen in den einzelnen Versionen nicht stets dieselben Fehler auftreten.
 Zudem stellt die Spezifikation eine entscheidende Komponente dar, welche möglichst eindeutig, vollständig und korrekt zu sein hat.
-In den nachfolgenden Kapiteln werden Studien vorgestellt, die diese Annahme der Unabhängigkeit der Versionen und Fehler untersucht.
+In den nachfolgenden Kapiteln werden Studien vorgestellt, die diese Annahme der Unabhängigkeit der auftretenden Fehler und die Unterschiede bezüglich der Spezifikationssprachen untersucht.
 %
-\subsection{Flughafenverwaltung}\label{uclastudies}
+\subsection{Wahl der Spezifikationssprache}\label{uclastudies}
 Die University of California, Los Angeles (UCLA) beschäftigte sich ab 1975 unter anderem damit, welche Anforderungen an die Spezifikationen zu stellen sind, welche Problemfelder zum Einsatz von N-Version Programmen geeignet sind und mit welchen Methoden sich die Effektivität in Anbetracht der Kosten zu alternativen Ansätzen vergleichen lässt \cite{Avizienis:1985:NAF:1314034.1314064}.
 In einer Studie der UCLA von 1978 - 1979 wurde anhand drei verschiedener Spezifikationssprachen untersucht, welche Auswirkungen die Wahl der Sprachen auf die zu entwickelnde multiversionale Software hat \cite{methodology}.
-Dazu wurde als algebraische Spezifikationssprache \emph{OBJ} ausgewählt. Zudem wurde die in der Industrie weit verbreitete Sprache \emph{PDL} und als zusätzliche Kontrollsprache Englisch untersucht.
+\subsubsection{Experimentaufbau}\label{ucla-experiment}{
+Als algebraische Spezifikationssprache wurde \emph{OBJ} ausgewählt. Zusätzlich wurde die in der Industrie weit verbreitete Sprache \emph{PDL} und als zusätzliche Kontrollsprache Englisch untersucht.
 Die gemeinsame Aufgabe bestand darin, ein Programm zum Verwalten von Flügen eines Flughafens zu schreiben, welches das Scheduling der Flüge inklusive Sitzplatzbelegungen implementiert.
 Da die Aufgabenstellung transaktionsorientiert war, fiel die Wahl der Vergleichsstellen im Ablauf der Versionen auf die Transaktionsendpunkte.
-An der Studie waren 30 Programmierer beteiligt, die insgesamt 18 Programmversionen in der Programmiersprache PL/1 erstellten.
+An dem Experiment waren 30 Programmierer beteiligt, die insgesamt 18 Programmversionen in der Programmiersprache PL/1 erstellten.
 Davon basierten 7 auf OBJ, 5 auf PDL und 6 auf der englischen Spezifikation.
 Mit 74 Seiten war die PDL-Spezifikation deutlich länger als die englische mit 10 und die OBJ-Spezifikation mit 13 Seiten.
-%
-
-%
 Die 18 Versionen wurden zunächst einmal gemeinsam für 100 Testtransaktionen durchgeführt und ihre Ergebnisse mit einem 18-fachen Vergleichsalgorithmus ausgewertet, um die erwarteten Resultate der Transaktionen zu erhalten.
+Anschließend wurden alle 816 möglichen Triple der 18 Versionen mit einem 3-fachen Vergleichsalgorithmus auf den Testtransaktionen ausgeführt.
+%
+\subsubsection{Ergebnisse}
+%
 Die erste Beobachtung lag darin, dass es es deutliche Unterschiede in der Größe und Laufzeit der unterschiedlichen Versionen gab.
-Anschließend wurden alle 816 möglichen Triple der 18 Versionen mit einem 3-fachen Vergleichsalgorithmus auf den Testtransaktionen ausgeführt. Dabei erzielten $80.1\%$ der Vergleichsergebnisse über alle Tripel ein semantisch korrektes Ergebnis. In den restlichen Fällen war entweder das Ergebnis falsch oder alle drei Versionen brachen bei der Ausführung mit einer Fehlerbehandlung ab. Triple aus OBJ-Versionen erzielten $78.2\%$, aus PDL-Versionen $85.8\%$, aus englischen Versionen $78.6\%$ und aus gemischten Versionen $80.9\%$ semantisch korrekte Ergebnisse. Dies zeigt, dass sich der zusätzliche Aufwand beim Erstellen der PDL-Spezifikation in besseren Ergebnissen wieder spiegelt.
-%
-
-%
+Bei Ausführung aller Testtransaktionen mit 3-fachem Vergleichsalgorithmus erzielten $80.1\%$ der Vergleichsergebnisse über alle Tripel ein semantisch korrektes Ergebnis.
+In den restlichen Fällen war entweder das Ergebnis falsch oder alle drei Versionen brachen bei der Ausführung mit einer Fehlerbehandlung ab.
+Triple aus OBJ-Versionen erzielten $78.2\%$, aus PDL-Versionen $85.8\%$, aus englischen Versionen $78.6\%$ und aus gemischten Versionen $80.9\%$ semantisch korrekte Ergebnisse. 
+Dies zeigt, dass sich der zusätzliche Aufwand beim Erstellen der PDL-Spezifikation in besseren Ergebnissen wieder spiegelt.
 Weiterhin wurden die aufgetretenen unentdeckten Fehler genauer auf ihre Ursache untersucht und in die Kategorien \emph{Spezifikationsfehler}, \emph{Interpretationsfehler} und \emph{Implementationsfehler} eingeteilt.
 Fehler in der Spezifikation traten alleinig in der OBJ- und in der Englisch-Spezifikation auf.
 Vor allem ausbleibende Eingabeüberprüfungen, welche zu Programmabbrüchen führten, gehörten zu den Interpretationsfehlern, die am stärksten in den PDL-Versionen vertreten waren.
 Der Großteil der Implementationsfehler wurden mit dem Umstand mangelnder Testzeit erklärt.
 Jedoch bestand weiterhin die Frage, ob sich der höhere Aufwand, welcher in höheren Kosten resultiert bei der erwarteten Steigerung der Fehlertoleranz lohnt.
-Beobachtet wurde zudem, dass unabhängige Fehler in den einzelnen Versionen häufig zu den selben falschen Ergebnissen führten, falls die Endergebnisse in simplen Bestätigungsaussagen über den Erfolg einer Transaktion lagen. Ein Ansatz dieses Problem zu lösen liegt darin, komplexere Zustandsinformationen in die Endergebnisse einzubinden.
+
+Beobachtet wurde zudem, dass unabhängige Fehlerursachen in den einzelnen Versionen häufig zu den selben falschen Ergebnissen führten, falls die Endergebnisse in simplen Bestätigungsaussagen über den Erfolg einer Transaktion lagen. Ein Ansatz dieses Problem zu lösen liegt darin, komplexere Zustandsinformationen in die Endergebnisse einzubinden.
 Als weitere Hürde für den Einsatz der N-Version Programmierung wurden fehlende automatisierte Werkzeuge, mangelnde Erfahrung mit formalen Spezifikationssprachen und im Allgemeinen mangelnde Präzision und Ausdrucksmöglichkeiten der untersuchten Spezifikationssprachen genannt.
 Abschließend wurde festgehalten, dass keine der drei Sprachen alle Anforderungen im Hinblick auf die N-Version Programmierung erfüllt.
 Zudem war die Anzahl der getesteten Versionen mit 18 relativ gering für ein solches Experiment, wenn betrachtet wird, dass lediglich 18 der beteiligten 30 Programmierer eine testbare Version entwickelten und diese größtenteils unerfahren in der Entwicklung von Programmen anhand von OBJ und PDL waren.
 %
-\subsection{John Knight und Nancy Leveson}\label{matrixexperiement}
-
-
-
-\subsection{Webserver}\label{webserver}
+\subsection{Knight \& Leveson Experiment}\label{matrixexperiement}
+%
+Die Funktionsweise der N-Version Programmierung basiert auf der Annahme, dass unabhängig voneinander entwickelte Versionen unabhängige Fehler produzieren.
+Ist diese Annahme korrekt, so liegt die Zuverlässigkeit des Gesamtsystems deutlich höher als die der einzelnen Versionen.
+In dem Experiment von John Knight und Nancy Leveson, welches in einer ausführlichen Beschreibung 1986 veröffentlicht wurde \cite{Knight:1986:EEA:10677.10688}, sollte untersucht werden, ob die Annahme der Unabhängigkeit von aufgetretenen Fehlern in verschiedenen Versionen zutrifft. 
+Dazu sollte eine große Anzahl von Versionen eines Zielprogramms entwickelt werden und durch realistische Testfälle überprüft werden, ob ein gemeinsames Versagen von zwei oder mehr Versionen häufiger auftritt, als durch die Unabhängigkeitsvermutung anzunehmen wäre.
+%
+%
+\subsubsection{Experimentaufbau}\label{knight-aufbau}
+Als zu implementierende Funktionalität der Versionen wurde die Aufgabe gestellt, aus Eingabevektoren von Radarreflexionen und gegebenen Randbedingungen zu überprüfen, ob die Reflexionen von einer eintreffenden Gefahr, wie zum Beispiel einer feindlichen Rakete, stammen und folglich eine Abfangrakete gestartet werden soll. Das auch als \enquote{\emph{launch interceptor problem}} bekannte Problem wurde bereits in weiteren Experimenten der Software-Entwicklung eingesetzt und als realistische Aufgabenstellung im Bereich Fehlertoleranz eingestuft. Außerdem lag ein sorgfältig getestetes \emph{Gold-Programm} aus früheren Experimente vor, welches als Vergleichsmaß angesetzt werden konnte.
+Insgesamt wurden $27$ Versionen des Zielprogramms in der Programmiersprache \emph{Pascal} von $23$ Studenten und $4$ Doktoranden aus einer gemeinsamen Spezifikation entwickelt.
+Dabei stammten $18$ der Versionen von Programmierern der University fo Californian in Irvine und $9$ von der University of Virginia.
+Neben der der boolschen Aussage, ob eine Abfangrakete gestartet werden soll, wurde eine $15 \times 15$ boolsche matrix und ein 15-elementiger boolscher Vektor mit Zwischenbedingungen als Ergebnisse der Versionen erwartet. Ein Versagen einer Version in einem Testlaufs bestand bereits sobald eins der resultierenden $241$ Bits vom erwarteten Ergebnis abwich. Zum Entwickeln der Versionen erhielt jeder Programmierer $15$ Sätze von Eingabe- und zugehörigen Ausgabewerten.
+Nachdem alle Versionen einen Abnahmetest bestanden hatten, wurden diese mit einer Millionen automatisch generierter Eingaben auf auftretende Fehler getestet.
+%
+\subsubsection{Ergebnisse}
+%
+Alle Versionen erzielten mit über $99\%$ eine hohe Zuverlässigkeit und $6$ Versionen waren gänzlich fehlerfrei. Trotzdem versagten in 1255 Testfällen mehr als eine Version.
+In $2$ Fällen versagten sogar $8$ Versionen. Ein Großteil der korreliert aufgetretenen Fehler lag in falschen mathematischen Annahmen zur Berechnung von Zwischenergebnissen und konnte nicht auf die Spezifikation zurückgeführt werden.
+Zur stochastischen Untersuchung der Annahme über die Unabhäng"-igkeit von aufgetretenen Fehlern in den einzelnen Versionen wurde eine Fehlerunabhängig"-keitshypothese aufgestellt.
+Sie besagt, dass die Gesamtfehlerwahrscheinlichkeit $P(S(x)=Fehler)$ einer N-Version Software $S$ mit $n$ Versionen $V_{1}, .., V_{n}$ für eine Eingabe $x$ dem Produkt der Fehlerwahrscheinlichkeiten aller Versionen $\prod_{i=1}^{n} P(V_{i}(x) = Fehler)$ entspricht.
+Diese Hypothese wurde durch die Testergebnisse des Experiments mit einer Konfidenz von über $99\%$ zurückgewiesen. Es wurde jedoch festgehalten, dass die Zurückweisung der Annahme über die Unabhängigkeit von Versagen in $N$ Versionen eines Programms nicht ohne weiteres auf andere Probleme übertragen lässt.
+Die Zurückweisung einer zentralen Annahme der N-Version Programmierung und das Experiment an sich rief heftige Kritik hervor, sodass Knight und Leveson 1990 eine Antwort \cite{reply_critics} dazu veröffentlichten.
+Kritisiert wurde unter anderem, dass die genauen Details des Prozesses der Entwicklung von N-Version Programmen nicht eingehalten wurden, der geringe Umfang des Experimentes  und die limitierte Diversität der entwickelten Versionen. Dieser Kritik entgegneten Knight und Leveson mit Gegenüberstellung ihres Experiments mit bisherigen Experimenten. Zudem weisen sie darauf hin, dass der entscheidende Faktor für Fehlertoleranz in Softwaresystemen nicht in der Unabhängigkeit von identischen Fehlerursachen in den Versionen sondern in der Unabhängigkeit von Fehlern bei identischen Eingaben für verschiedene Versionen besteht.
