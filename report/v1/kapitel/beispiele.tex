@@ -9,15 +9,15 @@ Die University of California, Los Angeles (UCLA) beschäftigte sich ab 1975 unte
 In einer Studie der UCLA von 1978 - 1979 wurde anhand drei verschiedener Spezifikationssprachen untersucht, welche Auswirkungen die Wahl der Sprachen auf die zu entwickelnde multiversionale Software hat \cite{methodology}.
 Dazu wurde als algebraische Spezifikationssprache \emph{OBJ} ausgewählt. Zudem wurde die in der Industrie weit verbreitete Sprache \emph{PDL} und als zusätzliche Kontrollsprache Englisch untersucht.
 Die gemeinsame Aufgabe bestand darin, ein Programm zum Verwalten von Flügen eines Flughafens zu schreiben, welches das Scheduling der Flüge inklusive Sitzplatzbelegungen implementiert.
-Da die Aufgabenstellung transaktionsorientiert ist, fiel die Wahl der Vergleichsstellen im Ablauf der Versionen auf die Transaktionsendpunkte.
+Da die Aufgabenstellung transaktionsorientiert war, fiel die Wahl der Vergleichsstellen im Ablauf der Versionen auf die Transaktionsendpunkte.
 An der Studie waren 30 Programmierer beteiligt, die insgesamt 18 Programmversionen in der Programmiersprache PL/1 erstellten.
 Davon basierten 7 auf OBJ, 5 auf PDL und 6 auf der englischen Spezifikation.
 Mit 74 Seiten war die PDL-Spezifikation deutlich länger als die englische mit 10 und die OBJ-Spezifikation mit 13 Seiten.
 %
 
 %
-Die 18 Versionen wurden zunächst einmal gemeinsam für 100 Testtransaktionen durchgeführt und ihre Ergebnisse mit einem 18-fachen Vergleichsalgorithmus ausgewertet um die erwarteten Resultate der Transaktionen zu erhalten.
-Dabei gab es deutliche Unterschiede in der Größe und Laufzeit der unterschiedlichen Versionen.
+Die 18 Versionen wurden zunächst einmal gemeinsam für 100 Testtransaktionen durchgeführt und ihre Ergebnisse mit einem 18-fachen Vergleichsalgorithmus ausgewertet, um die erwarteten Resultate der Transaktionen zu erhalten.
+Die erste Beobachtung lag darin, dass es es deutliche Unterschiede in der Größe und Laufzeit der unterschiedlichen Versionen gab.
 Anschließend wurden alle 816 möglichen Triple der 18 Versionen mit einem 3-fachen Vergleichsalgorithmus auf den Testtransaktionen ausgeführt. Dabei erzielten $80.1\%$ der Vergleichsergebnisse über alle Tripel ein semantisch korrektes Ergebnis. In den restlichen Fällen war entweder das Ergebnis falsch oder alle drei Versionen brachen bei der Ausführung mit einer Fehlerbehandlung ab. Triple aus OBJ-Versionen erzielten $78.2\%$, aus PDL-Versionen $85.8\%$, aus englischen Versionen $78.6\%$ und aus gemischten Versionen $80.9\%$ semantisch korrekte Ergebnisse. Dies zeigt, dass sich der zusätzliche Aufwand beim Erstellen der PDL-Spezifikation in besseren Ergebnissen wieder spiegelt.
 %
 
@@ -27,10 +27,10 @@ Fehler in der Spezifikation traten alleinig in der OBJ- und in der Englisch-Spez
 Vor allem ausbleibende Eingabeüberprüfungen, welche zu Programmabbrüchen führten, gehörten zu den Interpretationsfehlern, die am stärksten in den PDL-Versionen vertreten waren.
 Der Großteil der Implementationsfehler wurden mit dem Umstand mangelnder Testzeit erklärt.
 Jedoch bestand weiterhin die Frage, ob sich der höhere Aufwand, welcher in höheren Kosten resultiert bei der erwarteten Steigerung der Fehlertoleranz lohnt.
-Beobachtet wurde zudem, dass unabhängige Fehler in den einzelnen Versionen häufig zu den selben falschen Ergebnissen führen, falls die Endergebnis in simplen Bestätigungsaussagen liegen, ob eine Transaktion korrekt war. Ein Ansatz dieses Problem zu lösen liegt darin, komplexere Zustandsinformationen in die Endergebnisse einzubinden.
+Beobachtet wurde zudem, dass unabhängige Fehler in den einzelnen Versionen häufig zu den selben falschen Ergebnissen führten, falls die Endergebnisse in simplen Bestätigungsaussagen über den Erfolg einer Transaktion lagen. Ein Ansatz dieses Problem zu lösen liegt darin, komplexere Zustandsinformationen in die Endergebnisse einzubinden.
 Als weitere Hürde für den Einsatz der N-Version Programmierung wurden fehlende automatisierte Werkzeuge, mangelnde Erfahrung mit formalen Spezifikationssprachen und im Allgemeinen mangelnde Präzision und Ausdrucksmöglichkeiten der untersuchten Spezifikationssprachen genannt.
 Abschließend wurde festgehalten, dass keine der drei Sprachen alle Anforderungen im Hinblick auf die N-Version Programmierung erfüllt.
-Zudem war die Anzahl der getesteten Versionen mit 18 relativ gering für ein solches Experiment, wenn betrachtet wird, dass die lediglich 18 der beteiligten 30 Programmierer eine testbare Version entwickelten und sie größtenteils unerfahren in der Entwicklung von Programmen anhand von OBJ und PDL waren.
+Zudem war die Anzahl der getesteten Versionen mit 18 relativ gering für ein solches Experiment, wenn betrachtet wird, dass lediglich 18 der beteiligten 30 Programmierer eine testbare Version entwickelten und diese größtenteils unerfahren in der Entwicklung von Programmen anhand von OBJ und PDL waren.
 %
 \subsection{John Knight und Nancy Leveson}\label{matrixexperiement}
 
