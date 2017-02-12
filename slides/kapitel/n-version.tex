@@ -9,14 +9,69 @@
 %
 %
 \begin{frame}
-	\frametitle{Definition}
-	\enquote{\emph{N-version programming is defined as the independent generation of $ N \geq 2 $ functionally equivalent programs, called \enquote{versions}, from the same initial specification.}} \cite{Chen1978}
-
+	\frametitle{N-Version Programmierung - Definition}
+	\begin{block}{Definition: N-Version Programmierung \cite{Chen1978}}
+		\enquote{\emph{N-version programming is defined as the independent generation of $ N \geq 2 $ functionally equivalent programs, called \enquote{versions}, from the same initial specification.}}
+	\end{block}
 \end{frame}
 %
 \subsection{Konzepte}
 %
-\subsection{Annahmen}
+%
+\begin{frame}
+	\frametitle{Überblick}
+	\tableofcontents[currentsubsection]
+\end{frame}
+%
+%
+\begin{frame}
+	\frametitle{N-Version Programmierung - Konzepte (1)}
+	Nebenläufige Berechnung der Ergebnisse der N-Versionen:
+	\begin{figure}
+		\includegraphics[scale=0.3]{grafiken/multi-thread-n-version.png}		
+		\caption{N-Version Software-Unit im Falle von Multi-Threading
+			\footnotemark		
+		}		
+	\end{figure}
+	\footnotetext{Quelle: \cite{lucent}}
+\end{frame}
+%
+%
+\begin{frame}
+	\frametitle{N-Version Programmierung - Konzepte (2)}
+	Besondere Komponenten einer N-Version Software-Unit
+	\begin{itemize}
+		\item Vergleichsvektoren
+		\begin{itemize}
+			\item Zustand der jeweiligen Version
+			\item Variablen, Ereignisse...
+		\end{itemize}
+		\pause
+		\item Vergleichsindikatoren
+		\begin{itemize}
+			\item Ausgang eines Vergleichs
+			\item Anzustoßende Aktion
+		\end{itemize}
+		\pause
+		\item Synchronisationsmechanismen
+		\begin{itemize}
+			\item Signale zwischen Versionen und Treiber
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+%
+%
+\begin{frame}
+	\frametitle{N-Version Programmierung - Konzepte (3)}
+	Aufstellen der gemeinsamen Spezifikation:
+	\begin{itemize}
+		\item Zu implementierende Funktion
+		\item Datenformat der Vergleichsvektoren
+		\item Zu verwendende Vergleichsalgorithmus
+		\item Auf Ausgänge der Vergleiche folgende Aktionen
+	\end{itemize}
+\end{frame}
+%
 %
 \subsection{Beispiele}
 %

@@ -45,7 +45,7 @@
 		\begin{column}{0.48\textwidth}
 			Große Katastrophe:
 			\begin{itemize}
-				\item Start der Trägerrakete der Raumsonde \emph{Mariner1} (1962)
+				\item Start der Trägerrakete der Raumsonde \emph{Mariner 1} (1962)
 				\pause
 				\item Missverständnis beim Implementieren der Spezifikation
 				\pause
@@ -100,8 +100,7 @@
 				\item Ziel: Eliminierung alle Programmfehler vor produktivem Einsatz
 				\item Verwendung von Hochsprachen
 				\item Testgetriebene Entwicklung
-				\item Testautomatisierung				
-				\item Code-Reviews
+				\item Testautomatisierung	
 			\end{itemize}
 			\pause	
 			\item Fehlertoleranz im laufenden Betrieb	
@@ -131,8 +130,8 @@
 %
 %
 \begin{frame}
-	\frametitle{Ansätze für zuverlässige Systeme - Recovery Blocks}
-	Erster Ansatz: Recovery Blocks \cite{Horning:1974:PSE:647641.733522}
+	\frametitle{Ansätze für zuverlässige Systeme - Recovery Blocks (1)}
+	Erster Ansatz redundanter Berechnungen in Software: Recovery Blocks \cite{Horning:1974:PSE:647641.733522}
 	\begin{figure}
 		\includegraphics[scale=0.3]{grafiken/recovery-block.png}		
 		\caption{Ansatz der Recovery-Blocks
@@ -143,3 +142,11 @@
 \end{frame}
 %
 %
+\begin{frame}
+	\frametitle{Ansätze für zuverlässige Systeme - Recovery Blocks (2)}
+	Eigenschaften:
+	\begin{itemize}
+		\item Akzeptanztest kann so aufwendig wie die eigentliche Funktionalität werden
+		\item Zeitliche Verzögerung im Falle eines fehlgeschlagenen Tests
+	\end{itemize}	
+\end{frame}
