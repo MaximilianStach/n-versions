@@ -67,8 +67,9 @@
 	\begin{itemize}
 		\item Zu implementierende Funktion
 		\item Datenformat der Vergleichsvektoren
+		\item Vergleichsstellen im Programmablauf
 		\item Zu verwendende Vergleichsalgorithmus
-		\item Auf Ausgänge der Vergleiche folgende Aktionen
+		\item Durchzuführende Aktionen je nach Vergleichsausgang
 	\end{itemize}
 \end{frame}
 %
@@ -94,7 +95,12 @@
 	\begin{itemize}		
 		\item Spezifikation als entscheidende Komponente		
 		\item Korrektheitsbeweis der Spezifikation günstiger als Beweise einer korrekten Implementierung
+		\pause
 		\item Unabhängigkeit von Fehlern
+		\begin{itemize}		
+			\item Unterschiedliche Betrachtungen
+			\item Entscheidend:	Für die Wahrscheinlichkeit $P$ des Versagens einer Version $V_{x}$ bei einer Eingabe gilt: $P(V_{1}\given V_{2}) = P(V_{1}) \land P(V_{2}\given V_{1}) = P(V_{2})$.
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 %
@@ -118,7 +124,7 @@
 %
 \begin{frame}
 	\frametitle{Beispiel}
-	Airbus 320 mit 4 vorhandenen Versionen des Flugkontrollsystems , 2 davon im ständigen Betrieb
+	Airbus 320 mit 4 vorhandenen Versionen des Flugkontrollsystems, 2 davon im ständigen Betrieb
 	\begin{figure}
 		\includegraphics[scale=0.13]{grafiken/A320_Atlantic_Airways.jpg}		
 		\caption{Airbus 320
