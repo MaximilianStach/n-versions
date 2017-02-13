@@ -26,7 +26,7 @@
 %
 \begin{frame}
 	\frametitle{N-Version Programmierung - Konzepte (1)}
-	Nebenläufige Berechnung der Ergebnisse der N-Versionen:
+	Nebenläufige Berechnung der Ergebnisse der N-Versionen und nachfolgender Vergleich um korrektes Ergebnis zu erzielen:
 	\begin{figure}
 		\includegraphics[scale=0.3]{grafiken/multi-thread-n-version.png}		
 		\caption{N-Version Software-Unit im Falle von Multi-Threading
@@ -95,7 +95,6 @@
 		\item Spezifikation als entscheidende Komponente		
 		\item Korrektheitsbeweis der Spezifikation günstiger als Beweise einer korrekten Implementierung
 		\item Unabhängigkeit von Fehlern
-		\item Ausgleich des zusätzlichen Zeitaufwandes durch Multi-Threading
 	\end{itemize}
 \end{frame}
 %
@@ -104,8 +103,8 @@
 	\frametitle{N-Version Programmierung - Konzepte (6)}
 	Welche Fehler können toleriert werden?
 	\begin{itemize}		
-		\item Implementierungsfehler durch unabhängige Entwicklung (Funktionelle Redundanz)
-		\item Laufzeitumgebungsfehler durch Streuen der Versionen auf verschiedene Plattformen (Strukturelle Redundanz)
+		\item Implementierungsfehler durch unabhängige Entwicklung
+		\item Laufzeitumgebungsfehler durch Streuen der Versionen auf verschiedene Plattformen
 	\end{itemize}
 \end{frame}
 %
