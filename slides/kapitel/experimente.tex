@@ -9,7 +9,7 @@
 \end{frame}
 %
 \begin{frame}
-	\frametitle{Experimente - Wahl der Spezifikationssprache (1)}
+	\frametitle{Wahl der Spezifikationssprache (1)}
 	Experiment von 1978-1983 \cite{Avizienis:1984:FTD:1319725.1320045}:
 	\begin{itemize}
 		\item Szenario: Flughafenverwaltung
@@ -23,7 +23,7 @@
 %
 %
 \begin{frame}
-	\frametitle{Experimente - Wahl der Spezifikationssprache (2)}
+	\frametitle{Wahl der Spezifikationssprache (2)}
 	Durchführung des Experiments mit 100 Testtransaktionen:
 	\begin{itemize}
 		\item Transaktionsendpunkte als Vergleichsstellen
@@ -34,12 +34,13 @@
 %
 %
 \begin{frame}
-	\frametitle{Experimente - Wahl der Spezifikationssprache (3)}
+	\frametitle{Wahl der Spezifikationssprache (3)}
 	Beobachtungen:
 	\begin{itemize}
 	\item Reine PDL-Tripel leicht zuverlässiger
 	\item Jedoch kein gravierender Unterschied bezüglich der Spezifikationssprachen
 	\item Mangelnde Präzision und Ausdrucksmöglichkeiten der untersuchten Sprachen
+	\item Fehlinterpretationen der Spezifikationen
 	\item Unabhängige Fehlerursachen führten häufig zu den selben falschen Ergebnissen.
 	\end{itemize}	
 \end{frame}
@@ -53,18 +54,18 @@
 \end{frame}
 %
 \begin{frame}
-	\frametitle{Experimente - Unabhängigkeit der Fehler?}
+	\frametitle{Unabhängigkeit der Fehler}
 	\begin{itemize}
 		\item Annahme der N-Version Programmierung:
 			\begin{itemize}
-				\item Unabhängige Entwicklungskonditionen führen zu unabhängigen Fehlern in den einzelnen Versionen
-				\item Verschiedene Versionen versagen unabhängig voneinander
-				\item Zuverlässigkeit des Gesamtsystems deutlich höher als die der einzelnen Versionen
+				\item Unabhängige Entwicklungskonditionen führen zu unabhängigen Fehlern in den einzelnen Versionen.
+				\item Verschiedene Versionen versagen unabhängig voneinander.
+				\item Zuverlässigkeit des Gesamtsystems ist deutlich höher als die der einzelnen Versionen.
 			\end{itemize}
 			\pause
 			\item Aber:
 			\begin{itemize}
-				\item Programmierer tendieren bei anspruchsvollen Aufgaben dazu die selben Fehler zu machen
+				\item Programmierer tendieren bei anspruchsvollen Aufgaben dazu die selben Fehler zu machen.
 				\item Enorme zusätzliche Kosten in der Entwicklung multipler Versionen
 				\item Lohnt sich der Aufwand?
 				\item $\implies$ Annahme der Fehlerunabhängigkeit untersuchen
@@ -76,7 +77,7 @@
 %
 %
 \begin{frame}
-	\frametitle{Experimente - Knight \& Leveson (1)}
+	\frametitle{Knight \& Leveson Experiment (1)}
 
 	 Experiment zur Überprüfung der Unabhängigkeit von Fehlern in Versionen \cite{Knight:1986:EEA:10677.10688}:
 		\begin{itemize}
@@ -91,7 +92,7 @@
 %
 %
 \begin{frame}
-	\frametitle{Experimente - Knight \& Leveson (2)}
+	\frametitle{ Knight \& Leveson Experiment(2)}
 	
 	Ergebnisse:
 	\begin{itemize}
@@ -99,8 +100,10 @@
 		\item Trotzdem hohes Auftreten gemeinsamer Fehler in Testfällen
 		\item In 1255 Fällen versagte mehr als eine Version
 		\item In 2 Fällen versagten sogar 8 Versionen
-		\item Mehr korrelierte Fehler als bei einer Normalverteilung bei Unabhängigkeit der Fehler anzunehmen
+		\item Mehr korrelierte Fehler aufgetreten, als bei eine Normalverteilung von unabhängigen Fehlern anzunehmen wäre
+		\item Fehler aufgrund von mangelhaften mathematischen Kenntnissen
 		\item Annahme der Fehlerunabhängigkeit zurückgewiesen
+		
 	\end{itemize}
 	
 \end{frame}
