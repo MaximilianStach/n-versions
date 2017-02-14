@@ -104,7 +104,7 @@
 		\item In 2 Fällen versagten sogar 8 Versionen
 		\item Mehr gemeinsame Fehler aufgetreten, als bei eine Normalverteilung von unabhängigen Fehlern anzunehmen wäre
 		\item Fehler aufgrund von mangelhaften mathematischen Kenntnissen
-		\item Annahme der Fehlerunabhängigkeit zurückgewiesen
+		\item Annahme der Fehlerunabhängigkeit zurückgewiesen		
 	\end{itemize}
 	\pause
 	
@@ -129,6 +129,26 @@
 %
 %
 \begin{frame}
+	\frametitle{N-Version Website}
+	
+	\begin{itemize}
+		\item 3 Versionen eines Online-Auktionshauses \cite{zero-day}
+		\item Unterschiede in den Komponenten:
+		\begin{itemize}
+			\item Betriebssystem
+			\item Webserver
+			\item Programmiersprache
+			\item DBMS
+		\end{itemize}
+		\item Ziel: Robustheit gegenüber Zero-Day-Exploits
+		\item Schwachstelle: Verwaltender HTTP-Dispatcher
+		
+	\end{itemize}
+	
+\end{frame}
+%
+%
+\begin{frame}
 	\frametitle{Cloud-basierte Antiviren-Software}
 	
 	CloudAV, Antiviren-System als Netzwerk-Service in der Cloud \cite{Oberheide:2008:CNA:1496711.1496718}: 
@@ -144,25 +164,5 @@
 		}		
 	\end{figure}
 	\footnotetext{Quelle: \cite{Oberheide:2008:CNA:1496711.1496718}}
-\end{frame}
-%
-%
-\begin{frame}
-	\frametitle{N-Version Website}
-
-	\begin{itemize}
-		\item 3 Versionen eines Online-Auktionshauses \cite{zero-day}
-		\item Unterschiede in den Komponenten:
-		\begin{itemize}
-			\item Betriebssystem
-			\item Webserver
-			\item Programmiersprache
-			\item DBMS
-		\end{itemize}
-		\item Ziel: Robustheit gegenüber Zero-Day-Exploits
-		\item Schwachstelle: Verwaltender HTTP-Dispatcher
-
-	\end{itemize}
-	
 \end{frame}
 %
