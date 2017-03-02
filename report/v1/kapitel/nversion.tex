@@ -49,8 +49,8 @@ Die Beschreibung der verschiedenen Konfigurationen der Architekturen kann über 
 	\item $YH$: $Y$ eingesetzte (Hardware-)Plattformen $H$
 	\item $ZS$: $Z$ eingesetzte Software-Versionen $S$
 \end{enumerate}
-In einer Single-Channel Architektur werden alle Versionen einer Software auf einer einzigen Plattform $(XT|1H|ZS)$ ausgeführt. In herkömmlichen Systemen kann im Falle eines erkannten Fehlers die eingesetzte Version von einem Sicherungspunkt erneut ausgeführt $(2T|1H|1S)$, oder zusätzlich eine Kopie der ursprünglich eingesetzten Version verwendet werden $(2T|1H|2S)$.
-In Multi-Channel Architekturen hingegen werden $N$ Software-Versionen auf $N$ Hardware-Plattformen gleichzeitig ausgeführt $(1T|NH|NS)$.
+In einer Single-Channel Architektur werden alle Versionen einer Software auf einer einzigen Plattform $(XT|1H|ZS)$ ausgeführt. Bei herkömmlichen Systemen kann im Falle eines erkannten Fehlers die eingesetzte Version von einem Sicherungspunkt erneut ausgeführt $(2T|1H|1S)$, oder zusätzlich eine Kopie der ursprünglich eingesetzten Version verwendet werden $(2T|1H|2S)$.
+In Multi-Channel Architekturen hingegen werden $N$ Software-Versionen auf $N$ Hardware-Platt"-formen gleichzeitig ausgeführt $(1T|NH|NS)$.
 Mit $N=4$ Versionen und Plattformen wurde diese Architektur beispielsweise im Space Shutle der NASA eingesetzt \cite{conf/ifip/Goldberg80}.
 Zum Erzielen von Fehlertoleranz durch den Ansatz der mehrfachen Berechnung in Verbindung mit Multi-Channel Architekturen müssen zwei fundamentale Bedingungen erfüllt sein. Zum einen muss die Konsistenz der initialen Zustände und Eingaben aller Berechnungen gegeben sein, zum anderen muss ein zuverlässiger Vergleichsalgorithmus die einzelnen Ergebnisse vergleichen und ein finales Ergebnis bereitstellen.
 Die im Folgenden beschriebenen Eigenschaften des Entwurfs von N-Version Programmen behandeln diese Bedingungen.
@@ -80,7 +80,7 @@ Nach Möglichkeit sollen die einzelnen Versionen von unabhängigen Entwicklertea
 
 
 \subsubsection{Funktionsweise}
-
+Der Ablauf beim Einsatz einer N-Version Software verläuft wie folgt:
 Auf ein Signal des Treibers hin starten die Versionen ihren Programmablauf mit identischen Eingabewerten bis sie zu einem Vergleichspunkt kommen, ihre Vergleichsvektoren bereitstellen und in einen wartenden Zustand zurückkehren.
 Für $N = 2$ Versionen besteht der Vergleichsalgorithmus in einem direkten Abgleich der Vergleichsvektoren, bei $N > 2$ in einer Wahl des mehrheitlichen Ergebnisses. Falls ein oder mehrere Versionen nicht rechtzeitig ihre Vergleichsvektoren nach Aktivierung wiedergeben, können diese abgebrochen werden. Ansonsten wird ein korrektes Ergebnis aus den vorhandenen Vergleichsvektoren bestimmt. Bei numerischen Operationen können beim Vergleich Abweichungen toleriert und ein gemeinsames Ergebnis adaptiv bestimmt werden, in das alle vorhanden Ergebnisse der Versionen einfließen. 
 Die zugrunde liegende Annahme, die den zusätzlichen Aufwand der verschiedenen Versionen rechtfertigen soll, besteht darin, dass unabhängige Entwicklungsprozesse signifikant die Wahrscheinlichkeit für identische Design-Fehler in zwei oder mehr Versionen senken.
